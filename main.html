@@ -1,16 +1,68 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <title>Alphabetical Article Sorter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 40px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            width: 350px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+        li {
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+    </style>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
+
+<h1>Alphabetical Article Sorter</h1>
+
+<ul id="band"></ul>
+
+<script>
+const bands = [
+    'The Plot in You',
+    'The Devil Wears Prada',
+    'Pierce the Veil',
+    'Norma Jean',
+    'The Bled',
+    'Say Anything',
+    'The Midway State',
+    'We Came as Romans',
+    'Counterparts',
+    'Oh, Sleeper',
+    'A Skylit Drive',
+    'Anywhere But Here',
+    'An Old Dog'
+];
+
+// Function to remove 'a', 'an', 'the' for sorting
+function strip(article) {
+    return article.replace(/^(a |an |the )/i, '').trim();
+}
+
+const sortedBands = bands.sort((a, b) => strip(a).localeCompare(strip(b)));
+
+document.getElementById('band').innerHTML =
+    sortedBands.map(band => `<li>${band}</li>`).join('');
 </script>
 
 </body>
-
 </html>
